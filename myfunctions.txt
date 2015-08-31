@@ -1,0 +1,183 @@
+nonholonomic vehicle
+
+u1 € [0,2]
+u2 € [-1,1]
+
+x[0]€ [-2, 2]
+x[1]€ [-2,2]
+x[2]€ [-1, 1]
+
+
+function f(x[3],t) 
+        xd=t; 
+        xdd=1; 
+        yd=0; 
+        ydd=0; 
+
+        nx=(2*xdd - (x[0] - xd)/((x[0] - xd)^2 + (x[1] - yd)^2)^(1/2));
+        ny=(-(x[1] - yd)/((x[0] - xd)^2 + (x[1] - yd)^2)^(1/2));
+
+        u1=sqrt(nx^2+ny^2);
+
+
+        thetad=atan2(ny, nx);
+
+        K=2;
+        u2=-K*sin(x[2]-thetad);
+
+    return(
+        u1*cos(x[2]),
+        u1*sin(x[2]),
+        u2
+    );
+end
+        
+
+function g(x[3],t)
+        r=5;
+        alpha=0.5;
+
+        xd=t; 
+        xdd=1; 
+        yd=0; 
+        ydd=0;
+
+        nx=(2*xdd - (x[0] - xd)/((x[0] - xd)^2 + (x[1] - yd)^2)^(1/2));
+        ny=(-(x[1] - yd)/((x[0] - xd)^2 + (x[1] - yd)^2)^(1/2));
+
+        norm=sqrt(nx^2+ny^2);
+
+        
+        return(((x[0]-xd)^2+(x[1]-yd)^2-r^2),
+                ((cos(x[2])-nx/norm)^2+(sin(x[2])-ny/norm)^2 ) - alpha^2
+               );
+end
+
+
+________________________________________________
+pendulum
+
+x[0]€ [-inf, inf]
+x[1]€ [-inf,inf]
+
+function f(x[2],t)
+         return(
+             x[1],
+             (-1*sin(x[0])-0.15*x[1])
+         );
+     end
+
+
+function g(x[2],t)
+         return(
+                 (x[0]^2+x[1]^2-1)
+         );
+     end
+
+
+________________________________________________
+
+nonholonomic mer2014
+
+Boxes outer approximation = 659
+Outside boxes = 536
+Unsafe boxes = 76
+Back in boxes = 47
+Boxes inner approximation = 0
+Inside boxes = 0
+Inside unsafe boxes = 0
+Elapsed time = 16734.1
+
+
+function f(x[3],t) 
+         xd = 7*t; 
+        xdd = 7; 
+         yd = sin(0.1*t);
+         ydd = 0.1*cos(0.1*t);
+         xdiff = (xd-x[0]+xdd);
+         ydiff = (yd-x[1]+ydd);
+         norm =  ( sqrt((xdiff)^2 +(ydiff)^2) );
+         return(
+                 norm*cos(x[2]),
+             norm*sin(x[2]),
+             10*(cos(x[2])*(ydiff)-sin(x[2])*(xdiff))/norm
+         );
+     end
+
+
+function g(x[3],t)
+                xd=7*t; 
+                xdd=7; 
+                yd=sin(0.1*t); 
+                ydd=0.1*cos(0.1*t); 
+                xdiff=(xd-x[0]+xdd);
+                ydiff=(yd-x[1]+ydd);
+                den=sqrt(xdiff^2+ydiff^2);
+                return(((x[0]-xd)^2+(x[1]-yd)^2-1),
+             ((cos(x[2])-xdiff/den)^2+(sin(x[2])-ydiff/den)^2 ) - 0.2 
+                       );
+end
+
+
+
+
+___________________________________
+dubins
+u€[-2,2]
+
+function f(x[3],t) 
+         xd = 1*cos(t); 
+         xdd = -1*sin(t); 
+         yd = 1*sin(t);
+         ydd = 1*cos(t);
+         den1 = sqrt((xd-x[0])^2+(yd-x[1])^2);
+         den2=sqrt(xdd^2+ydd^2);
+         nx=1/den1*(xd-x[0])+2/den2*xdd;
+         ny=1/den1*(yd-x[1])+2/den2*ydd;
+         thetad=atan2(ny, nx);
+         u=-2*sin(x[2]-thetad);
+         return(
+                 cos(x[2]),
+             	 sin(x[2]),
+                 u
+         );
+     end
+
+
+function g(x[3],t)
+         R=1;
+         alpha=0.2;
+         xd = 1*cos(t); 
+         xdd = -1*sin(t); 
+         yd = 1*sin(t);
+         ydd = 1*cos(t);
+         den1 = sqrt((xd-x[0])^2+(yd-x[1])^2);
+         den2=sqrt(xdd^2+ydd^2);
+         nx=1/den1*(xd-x[0])+2/den2*xdd;
+         ny=1/den1*(yd-x[1])+2/den2*ydd;
+         norm=sqrt(nx^2+ny^2);
+         return(
+                 (x[0]-xd)^2+(x[1]-yd)^2-R^2,
+             	 (cos(x[2])-nx/norm)^2+(sin(x[2])-ny/norm)^2-alpha^2
+         );
+end
+
+
+
+
+_______________________________________
+
+function f(x[3],t)
+         return(
+                 -x[0]+t,
+             	 -x[1],
+                 -x[2]
+         );
+     end
+
+function g(x[3],t)
+         return(
+                 (x[0]-t)^2+x[1]^2-1 ,
+		 (cos(x[2])-1)^2 +(sin(x[2]))^2-0.2
+         );
+     end

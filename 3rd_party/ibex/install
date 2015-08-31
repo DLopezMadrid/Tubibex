@@ -1,0 +1,44 @@
+http://www.ibex-lib.org/doc/install.html#standard-install-stable
+
+
+Standard install (stable)
+
+Create a new directory Ibex:
+
+~$ mkdir Ibex
+Download Soplex 1.7.x and save the archive in Ibex. Warning: The current release of Ibex is not compatible with Soplex 2.0.
+
+Compile Soplex:
+
+~$ cd Ibex
+~/Ibex$ tar xvfz soplex-1.7.2.tgz
+~/Ibex$ cd soplex-1.7.2
+~/Ibex/soplex-1.7.2$ make ZLIB=false
+~/Ibex/soplex-1.7.2$ cd ..
+Save the archive ibex-2.1.16.tar.gz in Ibex
+
+Install and configure Ibex:
+
+~/Ibex/$ tar xvfz ibex-2.1.16.tar.gz
+~/Ibex/$ cd ibex-2.1.16
+~/Ibex/ibex-2.1.16/$ ./waf configure --with-soplex=[soplex-path]
+where [soplex-path] is the absolute path where soplex is installed (don’t use the relative path --with-soplex=../soplex-1.7.2).
+
+Compile Ibex:
+
+~/Ibex/ibex-2.1.16/$ sudo ./waf install
+Requirements
+
+The following applications must be installed.
+
+g++
+gcc
+flex
+bison
+python2.x (warning: the script are currently not compatible with python3)
+make
+pkg-config (optionnal)
+jdk (optionnal)
+On Ubuntu, you can install all you need with:
+
+~$ sudo apt-get install -y python2.7 flex bison gcc g++ make pkg-config

@@ -1,0 +1,6 @@
+https://github.com/ENSTABretagneRobotics/VIBES/releases
+v0.2.0(beta)
+
+to compile the viewer in linux use cmake 
+cmake ./CMakeLists.txt
+Then ccmake or make I cant remember right now, sorry

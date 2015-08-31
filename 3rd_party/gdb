@@ -1,0 +1,7 @@
+gdb 7.9.1
+
+https://www.sourceware.org/gdb/download/
+
+./configure --prefix=/usr --with-python
+make
+make install

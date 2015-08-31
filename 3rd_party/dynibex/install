@@ -1,0 +1,26 @@
+Download and Installation
+
+DynIbex is made of two main ingredients: an extension of the affine arithmetic and the validated Runge-Kutta methods. 
+DynIbex comes in two flavor due to some improvements in Ibex library:
+Old version (Ibex prior of version 2.1.14)
+
+We assume that Ibex version 2.1.13 is installed correctly as explained in the Ibex documentation.
+Download the DynIbex source code (for Ibex 2.1.13)
+New version (Ibex version >= 2.1.14)
+
+Since Ibex version 2.1.14, our implementation of affine arithmetic is now fully integrated into Ibex.
+We assume that latest version of Ibex is installed correctly as explained in the Ibex documentation.
+Download the DynIbex source code (tested with version Ibex 2.1.16)
+We assume that the following sequence of commands are executed in Ibex directory.
+Put the archive into the Ibex directory, then write the following commands:
+
+	  Ibex foo$ tar xvfz tmp_install.tar.gz -C ibex-2.1.x
+	  Ibex foo$ cd ibex-2.1.x
+	  Ibex/ibex-2.1.x foo$ python ./install_plugin.py
+	  Ibex/ibex-2.1.x foo$ ./waf configure [options]
+	  Ibex/ibex-2.1.x foo$ ./waf install
+	
+You can access to a small API of DynIbex.
+
+http://perso.ensta-paristech.fr/~chapoutot/dynibex/doc.html
+
