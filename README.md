@@ -29,8 +29,7 @@ Tubibex was developed in Linux Mint 17.2 x64 and it uses the following software 
 * Ibex 2.1.16
   * http://www.ibex-lib.org/doc/install.html#standard-install-stable
 
-    * The following applications must be installed.
-
+  * The following applications must be installed.
     * g++
     * gcc
     * flex
