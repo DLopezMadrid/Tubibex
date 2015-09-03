@@ -3,6 +3,8 @@
 
 Tubibex is an algorithm for calculating capture tubes based on the ibex library
 
+Spinoff with vertex inner solutions: https://github.com/DLopezMadrid/Tubibex-vertex
+
 My MSc in Advanced Control and Systems engineering is in the doc folder:
 D. Lopez, Development and implementation of an algorithm for the calculation of positive invariant sets using interval methods, University of Manchester, 2015
 
