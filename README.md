@@ -3,7 +3,12 @@
 
 Tubibex is an algorithm for calculating capture tubes based on the ibex library
 
+My MSc in Advanced Control and Systems engineering is in the doc folder:
+D. Lopez, Development and implementation of an algorithm for the calculation of positive invariant sets using interval methods, University of Manchester, 2015
+
 Capture tube paper: L. Jaulin, D. Lopez, Le Doze, S. Le Menec, J. Ninin, G. Chabert, M. S. Ibnseddik, A. Stancu (2015), Computing capture tubes, Reliable Computing, accepted. PDF: https://www.ensta-bretagne.fr/jaulin/paper_captube.pdf
+
+
 
 Available in /doc folder
 
